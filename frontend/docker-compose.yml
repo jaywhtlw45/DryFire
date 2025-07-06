@@ -1,0 +1,25 @@
+services:
+  vue-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: dryfire-frontend
+    restart: unless-stopped
+    
+  # Optional: Add development service
+  vue-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    container_name: vue3-dev
+    profiles:
+      - dev
