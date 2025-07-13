@@ -57,6 +57,9 @@ function handleApiRequest($segments, $method) {
         case 'users':
             handleUsersRequest($method, $id);
             break;
+        case 'uploadFile':
+            uploadFile($method);
+            break;
         default:
             http_response_code(404);
             echo json_encode(['error' => 'Resource not found']);
@@ -83,4 +86,12 @@ function handleUsersRequest($method, $id) {
             break;
     }
 }
+
+function uploadFile($method){
+    switch($method){
+        case 'POST':
+            
+    }
+}
+
 ?>
